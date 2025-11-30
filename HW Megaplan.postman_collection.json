@@ -57,7 +57,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer MTMwMDM4OTcxNzJkMmFhMzA1MWJmMDJjMGRiZDMxZDI0MGY1ODlkOGYzOWFkNTAxM2FkYzdkMDcyMTYyMTEwNQ",
+						"value": "Bearer OGY2MGM5ZjIwNTYzY2ZmN2NiYmNlYjJjODZhM2E4ZjMxNGVkMTJhODNmZDY4YjcyMzc3MzgzNzI0MmI5MmVlZg",
 						"type": "text"
 					}
 				],
@@ -94,13 +94,250 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer MTMwMDM4OTcxNzJkMmFhMzA1MWJmMDJjMGRiZDMxZDI0MGY1ODlkOGYzOWFkNTAxM2FkYzdkMDcyMTYyMTEwNQ",
+						"value": "Bearer OGY2MGM5ZjIwNTYzY2ZmN2NiYmNlYjJjODZhM2E4ZjMxNGVkMTJhODNmZDY4YjcyMzc3MzgzNzI0MmI5MmVlZg",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"contentType\": \"Task\",\r\n    \"attaches\": [],\r\n    \"statement\": \"<p>Побыстрее решить проблему №1</p>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/1000034",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"1000034"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "yura.torbunov+test2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/auth/access_token",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"auth",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer NjU5NGY1YjY3YmVlZGNjNDM1ZDBiMGFlY2Q0Yzc5MTM4ZTVkNDg3YWM2MWNiNTM1ZGJiYjI1NjM1YmRmNWYwMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"TaskActionRequest\",\r\n    \"action\": \"act_accept_task\",\r\n    \"text\": \"задача принята\",\r\n    \"nextTasksStatus\": \"accepted\",\r\n    \"checkTodos\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/1000034/doAction",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"1000034",
+						"doAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Done Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer NjU5NGY1YjY3YmVlZGNjNDM1ZDBiMGFlY2Q0Yzc5MTM4ZTVkNDg3YWM2MWNiNTM1ZGJiYjI1NjM1YmRmNWYwMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"TaskActionRequest\",\r\n    \"action\": \"act_done\",\r\n    \"text\": \"задача решена\",\r\n    \"nextTasksStatus\": \"done\",\r\n    \"checkTodos\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/1000034/doAction",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"1000034",
+						"doAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer NjU5NGY1YjY3YmVlZGNjNDM1ZDBiMGFlY2Q0Yzc5MTM4ZTVkNDg3YWM2MWNiNTM1ZGJiYjI1NjM1YmRmNWYwMg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"CommentCreateActionRequest\",\r\n    \"comment\": {\r\n        \"contentType\": \"Comment\",\r\n        \"content\": \"<p>Первый комментарий</p>\",\r\n        \"attaches\": [],\r\n        \"workTime\": null,\r\n        \"completed\": 0,\r\n        \"owner\": {\r\n            \"id\": \"1000004\",\r\n            \"contentType\": \"Employee\"\r\n        },\r\n        \"subject\": {\r\n            \"id\": \"1000034\",\r\n            \"contentType\": \"Task\"\r\n        }\r\n    },\r\n    \"transports\": [\r\n        {}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/1000034/comments",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"1000034",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept work",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer OGY2MGM5ZjIwNTYzY2ZmN2NiYmNlYjJjODZhM2E4ZjMxNGVkMTJhODNmZDY4YjcyMzc3MzgzNzI0MmI5MmVlZg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contentType\": \"TaskActionRequest\",\r\n    \"action\": \"act_accept_work\",\r\n    \"text\": \"задача готова\",\r\n    \"nextTasksStatus\": \"accepted\",\r\n    \"checkTodos\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/1000034/doAction",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"1000034",
+						"doAction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer OGY2MGM5ZjIwNTYzY2ZmN2NiYmNlYjJjODZhM2E4ZjMxNGVkMTJhODNmZDY4YjcyMzc3MzgzNzI0MmI5MmVlZg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
