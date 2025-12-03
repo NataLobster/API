@@ -409,7 +409,8 @@
 							"pm.test(\"Comment is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.data.content).to.eql(\"<p>Первый комментарий</p>\");\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -528,9 +529,11 @@
 							"}\r",
 							");\r",
 							"\r",
-							"//Наличие текста\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"Task successfully removed\");\r",
+							"//Наличие ответа об удалении задачи\r",
+							"\r",
+							"pm.test(\"Correct message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data).to.eql(\"Task successfully removed\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -541,6 +544,72 @@
 			],
 			"request": {
 				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{accessToken1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://m74965812.megaplan.ru/api/v3/task/{{currentTask}}",
+					"protocol": "https",
+					"host": [
+						"m74965812",
+						"megaplan",
+						"ru"
+					],
+					"path": [
+						"api",
+						"v3",
+						"task",
+						"{{currentTask}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Проверка на код ответа\r",
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"}\r",
+							");\r",
+							"\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.meta.errors[0].message).to.eql(\"Not Found Task with id = \" + pm.collectionVariables.get(\"currentTask\"));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
